@@ -15,8 +15,8 @@ public class Usuario {
 	private Long id;
 	
 	String nome;
-	
 	String email;
+	String senha;
 	
 	@Override
 	public int hashCode() {
@@ -33,7 +33,15 @@ public class Usuario {
 		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public Long getId() {
 		return id;
 	}
