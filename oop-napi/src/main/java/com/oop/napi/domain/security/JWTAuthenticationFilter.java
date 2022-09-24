@@ -44,10 +44,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         } catch (IOException e) {
             throw new RuntimeException("Falha ao autenticar",e);
         }
-
-
-
-        }
+    }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req,
@@ -62,10 +59,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(Algorithm.HMAC512(SECRET.getBytes()));
 
-
-
         res.getWriter().write("Token:" + token);
         res.getWriter().flush();
-        }
     }
-
+}

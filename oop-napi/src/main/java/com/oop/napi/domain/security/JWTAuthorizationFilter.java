@@ -58,14 +58,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
                 // new arraylist means authorities
                 return new UsernamePasswordAuthenticationToken(usuario, null, new ArrayList<>());
             }
-
             return null;
         }
         return null;
     }
-
-
 }
-
-
-
