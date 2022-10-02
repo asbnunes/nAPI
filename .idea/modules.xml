@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/nAPI.iml" filepath="$PROJECT_DIR$/.idea/nAPI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oop-napi/oop-napi.iml" filepath="$PROJECT_DIR$/oop-napi/oop-napi.iml" />
     </modules>
   </component>
 </project>
