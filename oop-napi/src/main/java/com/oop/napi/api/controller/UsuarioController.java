@@ -37,12 +37,17 @@ public class UsuarioController {
 		return usuarioRepository.save(usuario);
 	}
 
-	@DeleteMapping("excluir/{id}")
+	@DeleteMapping("/excluir/{id}")
 	public ResponseEntity<Void> excluir(@PathVariable Long id) {
 		if(!usuarioRepository.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
 		usuarioRepository.deleteById(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@PutMapping("/redefinir/{senha}")
+	public ResponseEntity<Void> redefinirSenha(@PathVariable String senha){
+		return ResponseEntity.accepted().build();
 	}
 }
