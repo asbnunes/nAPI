@@ -11,7 +11,7 @@
 
 package com.napi.domain.user;
 
-import groovy.transform.EqualsAndHashCode;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

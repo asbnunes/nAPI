@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 @RestController
 @RequestMapping(path = "oop-napi/register")
@@ -32,7 +32,7 @@ public class UserController {
 
 	@PostMapping("/adicionar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public UserData adicionar(@Valid @RequestBody UserData usuario) {
+	public UserData adicionar(/*@Valid*/ @RequestBody UserData usuario) {
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
 		return usuarioRepository.save(usuario);
 	}

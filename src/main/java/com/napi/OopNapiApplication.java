@@ -12,8 +12,8 @@ public class OopNapiApplication {
 		SpringApplication.run(OopNapiApplication.class, args);
 	}
 
-//	@Bean
-//	public PasswordEncoder getPasswordEncoder(){
-//		return new BCryptPasswordEncoder();
-//	}
+	@Bean
+	public PasswordEncoder getPasswordEncoder(){
+		return new BCryptPasswordEncoder();
+	}
 }
