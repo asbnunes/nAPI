@@ -7,7 +7,7 @@ import java.util.Optional;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oop.napi.domain.email.Mailer;
 import com.oop.napi.domain.email.MensagemEmail;
-import com.oop.napi.domain.email.SpringEmailMain;
+//import com.oop.napi.domain.email.SpringEmailMain;
 import com.oop.napi.domain.model.ResetPasswordToken;
 import lombok.val;
 import org.hibernate.ObjectNotFoundException;
@@ -56,7 +56,7 @@ public class UsuarioController {
 		usuarioRepository.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-
+/*
 	@PostMapping("/enviar-email")
 	public ResponseEntity<?> findById(@Valid @RequestBody Usuario usuario) throws JsonProcessingException {
 		Optional<Usuario> achouUsuario = usuarioRepository.findByEmail(usuario.getEmail());
@@ -89,7 +89,7 @@ public class UsuarioController {
 		return ResponseEntity.ok().build();
 	}
 
-	/*@PostMapping("/resetar-senha")
+	@PostMapping("/resetar-senha")
 	public ResponseEntity<?> findById(@Valid @RequestBody MudarSenha) {
 		ResetPasswordToken resetPasswordToken = serviceResetPassword.findByToken(dto.getToken());
 		if(resetPasswordToken == null) {

@@ -59,7 +59,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(Algorithm.HMAC512(SECRET.getBytes()));
 
-        res.getWriter().write("Token:" + token);
+        res.getWriter().write("Token: " + token);
         res.getWriter().flush();
     }
 }

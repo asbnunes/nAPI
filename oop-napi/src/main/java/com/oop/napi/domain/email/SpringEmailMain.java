@@ -1,4 +1,4 @@
-package com.oop.napi.domain.email;
+/*package com.oop.napi.domain.email;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -18,4 +18,4 @@ public class SpringEmailMain {
 
         System.out.println("Fim!");
     }
-}
+}*/
