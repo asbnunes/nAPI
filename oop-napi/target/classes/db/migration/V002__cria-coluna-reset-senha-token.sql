@@ -1,1 +1,0 @@
-ALTER TABLE usuario ADD reset_senha_token varchar(255);
