@@ -1,7 +1,7 @@
 package com.oop.napi.domain.services;
 
 import com.oop.napi.domain.model.ResetSenhaToken;
-import com.oop.napi.domain.repository.SenhaTokenRepository;
+import com.oop.napi.domain.repository.ResetSenhaTokenRepository;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class ResetSenhaTokenService {
 
     @Autowired
-    private SenhaTokenRepository repo;
+    private ResetSenhaTokenRepository repo;
 
     public ResetSenhaToken findByEmail(String email) {
         Optional<ResetSenhaToken> obj = this.repo.findByEmail(email);
@@ -36,7 +36,7 @@ public class ResetSenhaTokenService {
 
     public ResetSenhaToken update(ResetSenhaToken obj) {
         if(this.findById(obj.getId()) == null) {
-            throw new ObjectNotFoundException("Object "+ResetSenhaToken.class.getName()," not found! ID "+obj.getId());
+            throw new ObjectNotFoundException("Objeto "+ResetSenhaToken.class.getName()," não encontrado. ID: "+obj.getId());
         }
         return this.repo.save(obj);
     }

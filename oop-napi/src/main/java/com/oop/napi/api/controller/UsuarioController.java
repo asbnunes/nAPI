@@ -11,13 +11,16 @@ import com.oop.napi.domain.dto.UsuarioDTOResponse;
 import com.oop.napi.domain.email.Mailer;
 import com.oop.napi.domain.email.MensagemEmail;
 import com.oop.napi.domain.model.ResetSenhaToken;
+import com.oop.napi.domain.services.ResetSenhaSaveValidator;
 import com.oop.napi.domain.services.ResetSenhaTokenService;
 import com.oop.napi.domain.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import com.oop.napi.domain.model.Usuario;
@@ -32,16 +35,24 @@ public class UsuarioController {
 
 	@Autowired
 	private final Mailer mailer;
+
 	@Autowired
 	private final UsuarioRepository usuarioRepository;
+
 	@Autowired
 	private final PasswordEncoder encoder;
+
 	@Autowired
 	private MessageSource messages;
+
 	@Autowired
 	private ResetSenhaTokenService resetSenhaTokenService;
+
 	@Autowired
 	private UsuarioService usuarioService;
+
+	@Value("360000000000000")
+	private Long resetSenhaTokenExpirationMisiseg;
 
 	public UsuarioController(Mailer mailer, UsuarioRepository usuarioRepository,
 							 PasswordEncoder encoder, MessageSource messages,
@@ -88,19 +99,22 @@ public class UsuarioController {
 
 		if (achouUsuario == null) {
 			throw new UserNotFoundException("Erro ao tentar enviar o e-mail. Tente novamente.");
-		} else {
-			//ResetSenhaToken resetSenhaToken = usuarioService.generateResetPasswordToken(achouUsuario);
-			mailer.enviar(new MensagemEmail("Naruto themed API <oop.napi@gmail.com>",
-					Arrays.asList(dtoResponse.getEmail()),
-					"E-mail de recuperação de senha", "Olá! \n\n " +
-					"Para resetar sua senha acesse http://localhost:8080/usuarios/resetar-senha" +
-					" E informe seu token de acesso, sua nova senha e a confirmação dela.\n\n" +
-					"Seu token é: "));
 		}
+
+		ResetSenhaToken resetSenhaToken = usuarioService.generateResetPasswordToken(achouUsuario);
+		mailer.enviar(new MensagemEmail("Naruto themed API <oop.napi@gmail.com>",
+				Arrays.asList(dtoResponse.getEmail()),
+				"E-mail de recuperação de senha", "Olá!\n\n" +
+				"Infelizmente eu ainda não funciono com front end :( \n" +
+				"Para resetar sua senha acesse a URL [POST] http://localhost:8080/usuarios/resetar-senha " +
+				"e informe seu token, sua nova senha e a confirmação dela.\n\n" +
+				"Seu token é: " + resetSenhaToken.getToken()));
+
 		return ResponseEntity.ok().body("Um e-mail foi enviado para o endereço fornecido. "+
-			"Por favor, cheque o link e complete seu reset de senha.");
+			"Por favor, verifique o link e complete seu reset de senha.");
 	}
 
+	//erro
 	@PostMapping("/resetar-senha")
 	public ResponseEntity<?> resetarSenha(@Valid @RequestBody ResetSenhaDTO dto) {
 
@@ -111,16 +125,15 @@ public class UsuarioController {
 					.body("Erro ao resetar a senha.");
 		}
 
-/*
-		if (resetSenhaToken.isExpired(resetPasswordTokenExpirationMisiseg)) {
+		if (resetSenhaToken.isExpired(resetSenhaTokenExpirationMisiseg)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST.value())
-					.body("Link expirado.");
+					.body("Token expirado.");
 		}
-*/
-		Usuario usuario = resetSenhaToken.getUser();
-		usuario.setSenha(dto.getPassword());
+
+		//problema tá aqui
+		Usuario usuario = usuarioService.getUser(dto.getToken());
+		usuario.setSenha(dto.getSenha());
 		usuarioService.update(usuario);
-		resetSenhaToken.setToken(null);
 		resetSenhaTokenService.update(resetSenhaToken);
 
 		return ResponseEntity.ok().body("A senha foi alterada com sucesso.");

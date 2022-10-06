@@ -20,7 +20,7 @@ public class ResetSenhaSaveValidator implements ConstraintValidator<ResetSenhaSa
     public boolean isValid(ResetSenhaDTO objDto, ConstraintValidatorContext context) {
         List<FieldMessage> erros = new ArrayList<>();
 
-        if(!objDto.getPassword().equals(objDto.getPasswordConfirm())) {
+        if(!objDto.getSenha().equals(objDto.getConfirmaSenha())) {
             erros.add(new FieldMessage("Senha","não confere"));        }
 
         for (FieldMessage e : erros) {

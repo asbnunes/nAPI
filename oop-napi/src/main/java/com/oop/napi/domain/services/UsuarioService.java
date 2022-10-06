@@ -2,6 +2,7 @@ package com.oop.napi.domain.services;
 
 import com.oop.napi.domain.model.ResetSenhaToken;
 import com.oop.napi.domain.model.Usuario;
+import com.oop.napi.domain.repository.ResetSenhaTokenRepository;
 import com.oop.napi.domain.repository.UsuarioRepository;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class UsuarioService {
 
     @Autowired
     ResetSenhaTokenService resetSenhaTokenService;
+
+    @Autowired
+    ResetSenhaTokenRepository resetSenhaTokenRepository;
+
 
     public Usuario findById(Long id) {
         Optional<Usuario> obj = this.usuarioRepository.findById(id);
@@ -56,5 +61,18 @@ public class UsuarioService {
             resetSenhaTokenService.insert(resetToken);
         }
         return resetToken;
+    }
+
+    public Usuario getUser(final String verificationToken) {
+
+        final ResetSenhaToken token = resetSenhaTokenService.findByToken(verificationToken);
+        if (token != null) {
+            return token.getUser();
+        }
+        return null;
+    }
+
+    public ResetSenhaToken getVerificationToken(final String verificationToken) {
+        return resetSenhaTokenService.findByToken(verificationToken);
     }
 }

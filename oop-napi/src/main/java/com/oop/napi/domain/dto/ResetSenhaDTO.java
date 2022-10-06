@@ -16,11 +16,11 @@ public class ResetSenhaDTO {
     private String token;
 
     @NotNull
-    @Size(min=2)
-    private String password;
+    @Size(min=4)
+    private String senha;
 
     @NotNull
-    @Size(min=2)
-    @JsonProperty("password_confirm")
-    private String passwordConfirm;
+    @Size(min=4)
+    @JsonProperty("confirmação_de_senha")
+    private String confirmaSenha;
 }
