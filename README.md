@@ -1,8 +1,14 @@
 # nAPI
 
 ### Sobre a API
-O nAPI é uma API de personagens do anime Naruto. Foi desenvolvido por André Santodo, Gabriel Reis, Gustavo Pedro Lima e Maísa Moreira
-para a disciplina de Programação Orientada a Objetos (2022.2) do curso de Ciência da Computação - IESB.
+O nAPI é uma API de personagens do anime Naruto, que possibilita as operações básicas de cadastramento de usuários,
+completa com autorização de usuário e troca de senha via email, assim como cadastramento de informações dos personagens.<br>
+Foi desenvolvido por André Santoro, Gabriel Reis, Gustavo Pedro Lima e Maísa Moreira para a disciplina de
+Programação Orientada a Objetos (2022.2) do curso de Ciência da Computação - IESB.
+
+### Como executar
+1) Baixe o código do repositório do GitHub.
+2) No arquivo "application.properties", localizado em oop-napi/src/main/resources, mude o campo spring.datasource.password para a senha do seu usuário root do MySQL.
 
 ### Referências e Links
 Créditos e materiais utilizados para desenvolvimento:
