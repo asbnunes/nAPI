@@ -1,0 +1,554 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "nAPI 1.0",
+    "description": "O nAPI é uma API de personagens do anime Naruto. Foi desenvolvido por André Santoro, Gabriel Reis, Gustavo Pedro Lima e Maísa Moreira para a disciplina de Programação Orientada a Objetos (2022.2) do curso de Ciência da Computação - IESB.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "oop.napi@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "description": "SwaggerHub API Auto Mocking",
+      "url": "https://virtserver.swaggerhub.com/MAISAMMOREIRA_1/oop-napi/1.0.0"
+    },
+    {
+      "url": "https://localhost:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Usuário",
+      "description": "Operações com usuário"
+    },
+    {
+      "name": "Personagens",
+      "description": "Operações com personagens do anime Naruto"
+    }
+  ],
+  "paths": {
+    "/usuarios/adicionar": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Adiciona um novo usuário",
+        "description": "Adiciona um novo usuário",
+        "operationId": "adicionar",
+        "requestBody": {
+          "description": "Cria um novo usuário",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/usuarios/listar": {
+      "get": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Lista usuários",
+        "description": "Só pode ser feito por usuários logados",
+        "operationId": "listar",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Loga o usuário no sistema",
+        "description": "",
+        "operationId": "login",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Email para login",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "senha",
+            "in": "query",
+            "description": "Senha para login",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "headers": {
+              "Token": {
+                "description": "Token para autenticar",
+                "schema": {
+                  "type": "string",
+                  "example": "2c87d9fe-6372-42ce-a2ed-0779ea8e3611"
+                }
+              }
+            },
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/usuarios/excluir/{id}": {
+      "delete": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Deletar usuário",
+        "description": "Só pode ser feito por usuários logados",
+        "operationId": "excluir",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "O id do usuário que deve ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/usuarios/esqueci-senha": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Envia e-mail para resetar senha",
+        "description": "Envia email",
+        "operationId": "enviarEmailUsuari",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Email para recuperação",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "john@gmail.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Um email foi enviado para o endereço fornecido. Por favor, verifique o link e complete seu reset de senha"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/usuarios/resetar-senha": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Reseta senha",
+        "description": "Reseta senha",
+        "operationId": "resetarSenha",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Token para resetar",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "2c87d9fe-6372-42ce-a2ed-0779ea8e3611"
+            }
+          },
+          {
+            "name": "senha",
+            "in": "query",
+            "description": "Nova senha",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "3214"
+            }
+          },
+          {
+            "name": "confirmação de senha",
+            "in": "query",
+            "description": "Confirmar nova senha",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "3214"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A senha foi alterada com sucesso"
+          },
+          "400": {
+            "description": "Erro ao resetar a senha - Bad Request"
+          }
+        }
+      }
+    },
+    "/personagens": {
+      "post": {
+        "tags": [
+          "Personagens"
+        ],
+        "summary": "Adiciona novo personagem",
+        "description": "Adiciona novo personagem",
+        "operationId": "adicionaPersonagem",
+        "requestBody": {
+          "description": "Adiciona novo personagem",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Personagem"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Personagem"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Personagem"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Personagem adicionado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Personagem"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Personagem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/personagens/{id}": {
+      "get": {
+        "tags": [
+          "Personagens"
+        ],
+        "summary": "Encontra personagens pelo id",
+        "description": "Retorna apenas um personagem",
+        "operationId": "getPersonagemById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do personagem",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Personagem criado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Personagem"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Personagem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Id inválida"
+          },
+          "404": {
+            "description": "Personagem não encontrado"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Personagens"
+        ],
+        "summary": "Update de informações do personagem",
+        "description": "",
+        "operationId": "updatePersonagemById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do personagem a ser atualizado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Personagem"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Personagem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Personagens"
+        ],
+        "summary": "Deleta personagem",
+        "description": "Deleta personagem pelo id",
+        "operationId": "deletePersonagemById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do personagem a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletado com sucesso"
+          },
+          "400": {
+            "description": "Id inválida"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "nome": {
+            "type": "string",
+            "example": "john"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@gmail.com"
+          },
+          "senha": {
+            "type": "string",
+            "example": "1234"
+          }
+        },
+        "xml": {
+          "name": "usuario"
+        }
+      },
+      "ResetSenhaToken": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "token": {
+            "type": "string",
+            "example": "2c87d9fe-6372-42ce-a2ed-0779ea8e3611"
+          },
+          "createdDate": {
+            "type": "string",
+            "example": "06/10/2022"
+          }
+        },
+        "xml": {
+          "name": "resetSenhaToken"
+        }
+      },
+      "Personagem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true,
+            "example": 1
+          },
+          "nome": {
+            "type": "string",
+            "example": "kakashi"
+          },
+          "aldeia": {
+            "type": "string",
+            "example": "folha"
+          },
+          "elementos": {
+            "type": "string",
+            "example": "fogo"
+          }
+        },
+        "xml": {
+          "name": "personagem"
+        }
+      }
+    },
+    "requestBodies": {
+      "Usuario": {
+        "description": "Objeto do usuário que precisa ser adicionado",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Usuario"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Usuario"
+            }
+          }
+        }
+      },
+      "UserArray": {
+        "description": "List of user object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "usuario_autenticacao": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
