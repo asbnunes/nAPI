@@ -4,6 +4,7 @@ import com.oop.napi.domain.model.Personagem;
 import com.oop.napi.domain.repository.PersonagemRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,9 @@ public class PersonagemController {
 
     @GetMapping("/listar-personagens")
     @ApiOperation(value = "Lista todos os personagens", response = Personagem[].class)
+    @Query(value = "SELECT p.nome, p.sexo, p.cla, p.aldeia, e.estilo, p.registroNinja, p.patenteNinja " +
+            "FROM Personagem m, Estilo e " +
+            "INNER JOIN Personagem ON p.nome = e.nome")
     public ResponseEntity<List<Personagem>> listarTodos() {
         return ResponseEntity.ok(repository.findAll());
     }

@@ -23,9 +23,7 @@ public class Personagem {
 
     private String aldeia;
 
-    private String estilo;
-
-    private int registroNinja;
+    private String registroNinja;
 
     private String patenteNinja;
 
@@ -70,19 +68,11 @@ public class Personagem {
         this.aldeia = aldeia;
     }
 
-    public String getEstilo() {
-        return estilo;
-    }
-
-    public void setEstilo(String estilo) {
-        this.estilo = estilo;
-    }
-
-    public int getRegistroNinja() {
+    public String getRegistroNinja() {
         return registroNinja;
     }
 
-    public void setRegistroNinja(int registroNinja) {
+    public void setRegistroNinja(String registroNinja) {
         this.registroNinja = registroNinja;
     }
 
