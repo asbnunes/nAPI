@@ -9,70 +9,71 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Usuario {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 
-	@NotBlank
-	@Size(max = 60)
-	String nome;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotBlank
-	@Email
-	@Size(max = 255)
-	String email;
+    @NotBlank
+    @Size(max = 60)
+    String nome;
 
-	@NotBlank
-	@Size(max = 255)
-	String senha;
+    @NotBlank
+    @Email
+    @Size(max = 255)
+    String email;
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		return Objects.equals(id, other.id);
-	}
+    @NotBlank
+    @Size(max = 255)
+    String senha;
 
-	public String getSenha() {
-		return senha;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Usuario other = (Usuario) obj;
+        return Objects.equals(id, other.id);
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }

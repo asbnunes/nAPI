@@ -21,31 +21,37 @@ public class UserData implements UserDetails {
 
         return new ArrayList<>();
     }
+
     @Override
     public String getPassword() {
 
         return usuario.orElse(new Usuario()).getSenha();
     }
+
     @Override
     public String getUsername() {
 
         return usuario.orElse(new Usuario()).getEmail();
     }
+
     @Override
     public boolean isAccountNonExpired() {
 
         return true;
     }
+
     @Override
     public boolean isAccountNonLocked() {
 
         return true;
     }
+
     @Override
     public boolean isCredentialsNonExpired() {
 
         return true;
     }
+
     @Override
     public boolean isEnabled() {
 
