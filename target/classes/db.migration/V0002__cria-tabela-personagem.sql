@@ -6,7 +6,5 @@ CREATE TABLE Personagem (
     aldeia varchar(255) not null,
     registroNinja varchar(255),
     patenteNinja varchar(255),
-    primary key (id),
-
-    CONSTRAINT verificar_sexo CHECK (sexo='M' OR sexo='F')
+    primary key (id)
 )

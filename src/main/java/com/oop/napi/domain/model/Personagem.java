@@ -1,13 +1,10 @@
 package com.oop.napi.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
-@Entity(name = "Personagem")
+@Entity
 public class Personagem {
 
     @Id
@@ -23,17 +20,19 @@ public class Personagem {
 
     private String aldeia;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personagem", fetch = FetchType.EAGER)
+    private Set<Jutsu> jutsu;
+
     private String registroNinja;
 
     private String patenteNinja;
 
+    public Long getId() {
+        return id;
+    }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getNome() {
@@ -66,6 +65,14 @@ public class Personagem {
 
     public void setAldeia(String aldeia) {
         this.aldeia = aldeia;
+    }
+
+    public Set<Jutsu> getJutsu() {
+        return jutsu;
+    }
+
+    public void setJutsu(Set<Jutsu> jutsu) {
+        this.jutsu = jutsu;
     }
 
     public String getRegistroNinja() {
