@@ -34,6 +34,8 @@ public class JWTConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/**/webjars/springfox-swagger-ui/**", "/**/v2/api-docs/**", "/**/swagger-resources/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/usuarios/esqueci-senha").permitAll()
                 .antMatchers(HttpMethod.POST, "/usuarios/resetar-senha").permitAll()
+                .antMatchers(HttpMethod.GET, "/personagem/listar").permitAll()
+                .antMatchers(HttpMethod.GET, "/personagem/listar/{id}").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))

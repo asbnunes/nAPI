@@ -1,10 +1,6 @@
 package com.oop.napi.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity(name = "Personagem")
@@ -23,19 +19,23 @@ public class Personagem {
 
     private String aldeia;
 
-    private String estilo;
+    private String jutsu;
 
-    private int registroNinja;
-
+    @Column(name = "patente_ninja")
     private String patenteNinja;
 
+    @Column(name = "dublador_jp")
+    private String dubladorJapones;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "dublador_pt")
+    private String dubladorPortugues;
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -70,20 +70,12 @@ public class Personagem {
         this.aldeia = aldeia;
     }
 
-    public String getEstilo() {
-        return estilo;
+    public String getJutsu() {
+        return jutsu;
     }
 
-    public void setEstilo(String estilo) {
-        this.estilo = estilo;
-    }
-
-    public int getRegistroNinja() {
-        return registroNinja;
-    }
-
-    public void setRegistroNinja(int registroNinja) {
-        this.registroNinja = registroNinja;
+    public void setJutsu(String jutsu) {
+        this.jutsu = jutsu;
     }
 
     public String getPatenteNinja() {
@@ -92,5 +84,21 @@ public class Personagem {
 
     public void setPatenteNinja(String patenteNinja) {
         this.patenteNinja = patenteNinja;
+    }
+
+    public String getDubladorJapones() {
+        return dubladorJapones;
+    }
+
+    public void setDubladorJapones(String dubladorJapones) {
+        this.dubladorJapones = dubladorJapones;
+    }
+
+    public String getDubladorPortugues() {
+        return dubladorPortugues;
+    }
+
+    public void setDubladorPortugues(String dubladorPortugues) {
+        this.dubladorPortugues = dubladorPortugues;
     }
 }
