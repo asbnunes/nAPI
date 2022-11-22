@@ -19,10 +19,6 @@ public class Personagem {
 
     private String aldeia;
 
-    private String estilo;
-
-    private int registroNinja;
-
     private String jutsu;
 
     @Column(name = "patente_ninja")
@@ -72,22 +68,6 @@ public class Personagem {
 
     public void setAldeia(String aldeia) {
         this.aldeia = aldeia;
-    }
-
-    public String getEstilo() {
-        return estilo;
-    }
-
-    public void setEstilo(String estilo) {
-        this.estilo = estilo;
-    }
-
-    public int getRegistroNinja() {
-        return registroNinja;
-    }
-
-    public void setRegistroNinja(int registroNinja) {
-        this.registroNinja = registroNinja;
     }
 
     public String getJutsu() {

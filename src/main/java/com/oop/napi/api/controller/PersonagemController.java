@@ -23,7 +23,6 @@ public class PersonagemController {
         this.repository = repository;
     }
 
-
     @GetMapping("/listar")
     @ApiOperation(value = "Lista todos os personagens", response = Personagem[].class)
     public ResponseEntity<List<Personagem>> listarTodos() {
