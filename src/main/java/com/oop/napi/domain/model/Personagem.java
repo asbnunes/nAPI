@@ -2,9 +2,8 @@ package com.oop.napi.domain.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
-@Entity
+@Entity(name = "Personagem")
 public class Personagem {
 
     @Id
@@ -20,12 +19,20 @@ public class Personagem {
 
     private String aldeia;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personagem", fetch = FetchType.EAGER)
-    private Set<Jutsu> jutsu;
+    private String estilo;
 
-    private String registroNinja;
+    private int registroNinja;
 
+    private String jutsu;
+
+    @Column(name = "patente_ninja")
     private String patenteNinja;
+
+    @Column(name = "dublador_jp")
+    private String dubladorJapones;
+
+    @Column(name = "dublador_pt")
+    private String dubladorPortugues;
 
     public Long getId() {
         return id;
@@ -67,20 +74,28 @@ public class Personagem {
         this.aldeia = aldeia;
     }
 
-    public Set<Jutsu> getJutsu() {
-        return jutsu;
+    public String getEstilo() {
+        return estilo;
     }
 
-    public void setJutsu(Set<Jutsu> jutsu) {
-        this.jutsu = jutsu;
+    public void setEstilo(String estilo) {
+        this.estilo = estilo;
     }
 
-    public String getRegistroNinja() {
+    public int getRegistroNinja() {
         return registroNinja;
     }
 
-    public void setRegistroNinja(String registroNinja) {
+    public void setRegistroNinja(int registroNinja) {
         this.registroNinja = registroNinja;
+    }
+
+    public String getJutsu() {
+        return jutsu;
+    }
+
+    public void setJutsu(String jutsu) {
+        this.jutsu = jutsu;
     }
 
     public String getPatenteNinja() {
@@ -89,5 +104,21 @@ public class Personagem {
 
     public void setPatenteNinja(String patenteNinja) {
         this.patenteNinja = patenteNinja;
+    }
+
+    public String getDubladorJapones() {
+        return dubladorJapones;
+    }
+
+    public void setDubladorJapones(String dubladorJapones) {
+        this.dubladorJapones = dubladorJapones;
+    }
+
+    public String getDubladorPortugues() {
+        return dubladorPortugues;
+    }
+
+    public void setDubladorPortugues(String dubladorPortugues) {
+        this.dubladorPortugues = dubladorPortugues;
     }
 }

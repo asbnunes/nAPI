@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface PersonagemRepository extends JpaRepository<Personagem, Integer> {
 
-    public Personagem findById(Long id);
+    Personagem findById(Long id);
 
 }

@@ -1,2 +1,0 @@
-insert into Jutsu(nome_jutsu, id_personagem) values ('Rasengan', 1);	insert into Jutsu(nome_jutsu, id_personagem) values ('Clones das Sombras', 1);	insert into Jutsu(nome_jutsu, id_personagem) values ('Jutsu Sexy', 1);
-insert into Jutsu(nome_jutsu, id_personagem) values ('Chidori', 2);	insert into Jutsu(nome_jutsu, id_personagem) values ('Susanoo', 2);	insert into Jutsu(nome_jutsu, id_personagem) values ('Mangekyo Sharingan', 2);
