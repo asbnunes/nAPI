@@ -87,7 +87,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("excluir/{id}")
-    @ApiOperation(value = "Exclui um usuarios", response = Usuario.class)
+    @ApiOperation(value = "Exclui um usuário", response = Usuario.class)
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
 
         if (!usuarioRepository.existsById(id)) {
