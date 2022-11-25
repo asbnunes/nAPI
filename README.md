@@ -13,12 +13,12 @@ O nAPI é uma API de personagens do anime Naruto, que possibilita algumas opera�
 • Excluir personagem por id<br>
 
 ### Requisitos
-Você precisa ter instalado em sua máquina os seguintes programas para rodar localmente a API:
-• MySQL (https://dev.mysql.com/downloads/)
-• Intellij IDEA (https://www.jetbrains.com/pt-br/idea/download) - Ou qualquer outra IDE que suporte a linguagem Java.
-• SpringBoot (https://spring.io/projects/spring-boot)
-• Maven (https://www.jetbrains.com/help/idea/maven-support.html) 
-• Postman (https://www.postman.com/)
+Você precisa ter instalado em sua máquina os seguintes programas para rodar localmente a API:<br>
+• MySQL (https://dev.mysql.com/downloads/)<br>
+• Intellij IDEA (https://www.jetbrains.com/pt-br/idea/download) - Ou qualquer outra IDE que suporte a linguagem Java.<br>
+• SpringBoot (https://spring.io/projects/spring-boot)<br>
+• Maven (https://www.jetbrains.com/help/idea/maven-support.html) <br>
+• Postman (https://www.postman.com/)<br>
 
 ### Como executar
 1) Baixe ou clone o código do repositório do GitHub.
