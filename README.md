@@ -1,16 +1,16 @@
 # nAPI
 
 ### Sobre a API
-O nAPI é uma API de personagens do anime Naruto, que possibilita algumas operações básicas como:
-• Cadastramento de usuários
-• Autorização de usuário via token
-• Troca de senha via e-mail
-• Listar todos os usuários
-• Excluir usuário por id
-• Cadastramento de personagens
-• Listar todos os personagens
-• Listar personagens por id
-• Excluir personagem por id
+O nAPI é uma API de personagens do anime Naruto, que possibilita algumas operações básicas como:<br>
+• Cadastramento de usuários<br>
+• Autorização de usuário via token<br>
+• Troca de senha via e-mail<br>
+• Listar todos os usuários<br>
+• Excluir usuário por id<br>
+• Cadastramento de personagens<br>
+• Listar todos os personagens<br>
+• Listar personagens por id<br>
+• Excluir personagem por id<br>
 
 ### Requisitos
 Você precisa ter instalado em sua máquina os seguintes programas para rodar localmente a API:
