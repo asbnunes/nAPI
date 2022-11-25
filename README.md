@@ -1,14 +1,35 @@
 # nAPI
 
 ### Sobre a API
-O nAPI é uma API de personagens do anime Naruto, que possibilita as operações básicas de cadastramento de usuários,
-completa com autorização de usuário e troca de senha via email, assim como cadastramento de informações dos personagens.<br>
-Foi desenvolvido por André Santoro, Gabriel Reis, Gustavo Pedro Lima e Maísa Moreira para a disciplina de
-Programação Orientada a Objetos (2022.2) do curso de Ciência da Computação - IESB.
+O nAPI é uma API de personagens do anime Naruto, que possibilita algumas operações básicas como:
+• Cadastramento de usuários
+• Autorização de usuário via token
+• Troca de senha via e-mail
+• Listar todos os usuários
+• Excluir usuário por id
+• Cadastramento de personagens
+• Listar todos os personagens
+• Listar personagens por id
+• Excluir personagem por id
+
+### Requisitos
+Você precisa ter instalado em sua máquina os seguintes programas para rodar localmente a API:
+• MySQL (https://dev.mysql.com/downloads/)
+• Intellij IDEA (https://www.jetbrains.com/pt-br/idea/download) - Ou qualquer outra IDE que suporte a linguagem Java.
+• SpringBoot (https://spring.io/projects/spring-boot)
+• Maven (https://www.jetbrains.com/help/idea/maven-support.html) 
+• Postman (https://www.postman.com/)
 
 ### Como executar
-1) Baixe o código do repositório do GitHub.
-2) No arquivo "application.properties", localizado em oop-napi/src/main/resources, mude o campo spring.datasource.password para a senha do seu usuário root do MySQL.
+1) Baixe ou clone o código do repositório do GitHub.
+2) Inicie o servidor do MySQL.
+3) No Intellij, abra o projeto e aguarde a implementação das dependências necessárias.
+4) Depois de carregar todo o projeto, altere o arquivo "application.properties", localizado em oop-napi/src/main/resources, mudando o campo spring.datasource.password para a senha do seu usuário root do MySQL.
+5) Vincule o banco de dados através da aba Database clicando em new > Data Soure > MySQL.
+6) Crie dos endpoints necessários no Postman. 
+7) No Intellij, inicialize a API clicando em Run, na barra superior, ou utilizando o atalho Shift + F10.
+8) A API está rodando e pronta para ser utilizada.
+9) Para acessar a documentação em JSON, acesse no navegador o endereço: http://localhost:8080/v2/api-docs/
 
 ### Referências e Links
 Créditos e materiais utilizados para desenvolvimento:
@@ -20,3 +41,6 @@ Créditos e materiais utilizados para desenvolvimento:
 * [Spring boot backend template](https://github.com/davifelipems/spring-backend-template/tree/2ede3be043e576e557c42cf3dc5390e74f6962be)
 * [Mergulho Spring REST da AlgaWorks](https://cafe.algaworks.com/mergulho-spring-rest/)
 * [Updating your password - Baeldung](https://www.baeldung.com/updating-your-password/)
+
+Desenvolvido por André Santoro, Gabriel Reis, Gustavo Pedro Lima e Maísa Moreira para a disciplina de
+Programação Orientada a Objetos (2022.2) do curso de Ciência da Computação - IESB.
